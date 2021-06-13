@@ -2,13 +2,13 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-
+    
     @ObservedObject var viewModel = CountryViewModel()
     var body: some View {
         NavigationView {
-                   listView()
-                   .navigationBarTitle("CountriesKMM")
-                  
+            listView()
+                .navigationBarTitle("CountriesKMM")
+            
         }.onAppear(perform: {
             self.viewModel.getAll()
         })
@@ -18,9 +18,14 @@ struct ContentView: View {
         case .loading:
             return AnyView(Text("Loading...").multilineTextAlignment(.center))
         case .result(let countries):
-            return AnyView(List(countries){country in
-                return CountryView(country: country)
-            })
+            return AnyView(ScrollView {
+                LazyVStack {
+                    ForEach(countries) { country in
+                        CountryView(country: country)
+                    }
+                }
+            }.padding(.top,8)
+            )
         case .error(let description):
             return AnyView(Text(description).multilineTextAlignment(.center))
         case .idle:
@@ -30,9 +35,9 @@ struct ContentView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-	ContentView()
-	}
+    static var previews: some View {
+        ContentView()
+    }
 }
 
 extension Country : Identifiable{

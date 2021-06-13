@@ -38,8 +38,11 @@ struct CountryView :View {
             }
         }
         .cornerRadius(16)
-        .padding(8)
-        .fixedSize(horizontal: false, vertical: true)
+        .padding(.leading,16)
+        .padding(.trailing,16)
+        .padding(.bottom,8)
         .frame( height: 150)
+        .fixedSize(horizontal: false, vertical: true)
+        .listRowInsets(EdgeInsets())
     }
 }
