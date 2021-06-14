@@ -8,6 +8,7 @@ import io.ktor.client.request.*
 import kotlinx.serialization.json.Json
 
 class CountryApi {
+
     companion object {
         private const val ENDPOINT = "https://restcountries.eu/rest/v2"
         private const val ALL_COUNTRIES = "$ENDPOINT/all"

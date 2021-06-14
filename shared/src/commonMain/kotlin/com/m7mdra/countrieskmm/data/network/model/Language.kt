@@ -1,4 +1,4 @@
-package com.m7mdra.myapplication.network.model
+package com.m7mdra.countrieskmm.data.network.model
 
 
 import kotlinx.serialization.SerialName

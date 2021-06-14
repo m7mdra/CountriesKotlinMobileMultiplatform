@@ -2,7 +2,7 @@ package com.m7mdra.countrieskmm.network.model
 
 
 import com.m7mdra.myapplication.network.model.Currency
-import com.m7mdra.myapplication.network.model.Language
+import com.m7mdra.countrieskmm.data.network.model.Language
 import com.m7mdra.myapplication.network.model.RegionalBloc
 import com.m7mdra.myapplication.network.model.Translations
 import kotlinx.serialization.SerialName
