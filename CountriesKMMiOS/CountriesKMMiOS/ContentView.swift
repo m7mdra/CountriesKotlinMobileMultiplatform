@@ -25,6 +25,7 @@ struct ContentView: View {
                     }
                 }
             }.padding(.top,8)
+            
             )
         case .error(let description):
             return AnyView(Text(description).multilineTextAlignment(.center))
