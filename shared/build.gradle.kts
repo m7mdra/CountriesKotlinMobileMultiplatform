@@ -4,7 +4,6 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
-    kotlin("plugin.serialization")
     id("com.squareup.sqldelight")
 }
 
@@ -12,7 +11,7 @@ version = "1.0"
 val ktorVersion = "1.4.0"
 sqldelight {
     database("AppDatabase") {
-        packageName = "com.example.db"
+        packageName = "com.example"
     }
 }
 kotlin {
@@ -43,7 +42,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
-                implementation("com.squareup.sqldelight:runtime:+")
+                implementation("com.squareup.sqldelight:runtime:1.5.0")
             }
         }
         val commonTest by getting {
@@ -55,7 +54,7 @@ kotlin {
         val androidMain by getting{
             dependencies{
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
-                implementation("com.squareup.sqldelight:android-driver:+")
+                implementation("com.squareup.sqldelight:android-driver:1.5.0")
             }
         }
         val androidTest by getting {
@@ -67,7 +66,7 @@ kotlin {
         val iosMain by getting{
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktorVersion")
-                implementation("com.squareup.sqldelight:native-driver:+")
+                implementation("com.squareup.sqldelight:native-driver:1.5.0")
             }
         }
         val iosTest by getting

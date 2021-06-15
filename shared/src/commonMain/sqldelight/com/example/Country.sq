@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS COUNTRY(
+name TEXT NOT NULL,
+alpha2Code TEXT NOT NULL,
+alpha3Code TEXT,
+capital TEXT,
+region TEXT);
