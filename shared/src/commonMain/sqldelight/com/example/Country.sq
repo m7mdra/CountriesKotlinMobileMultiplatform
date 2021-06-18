@@ -1,8 +1,33 @@
-CREATE TABLE IF NOT EXISTS COUNTRY(
-name TEXT NOT NULL,
-alpha2Code TEXT NOT NULL,
-alpha3Code TEXT,
-capital TEXT,
-region TEXT
-
+CREATE TABLE IF NOT EXISTS Country (
+alpha2Code TEXT  ,
+alpha3Code TEXT  ,
+altSpellings TEXT  ,
+area REAL  ,
+borders TEXT ,
+callingCodes TEXT ,
+capital TEXT ,
+currencies TEXT ,
+demonym TEXT ,
+flag TEXT,
+gini REAL,
+languages TEXT ,
+latlng TEXT ,
+name TEXT ,
+nativeName TEXT ,
+numericCode TEXT ,
+population REAL ,
+region TEXT ,
+regionalBlocs TEXT ,
+subregion TEXT ,
+timezones TEXT ,
+topLevelDomain TEXT ,
+translations TEXT,
+cioc TEXT
 );
+
+insert:
+INSERT INTO Country(alpha2Code,alpha3Code,altSpellings,area,borders,callingCodes,capital,currencies,demonym,flag,gini,languages,latlng,name,nativeName,numericCode,population,region,regionalBlocs,subregion,timezones,topLevelDomain,translations,cioc
+                    ) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+getCountries:
+SELECT * FROM Country;
+

@@ -1,6 +1,6 @@
 package com.m7mdra.myapplication.network
 
-import com.m7mdra.countrieskmm.network.model.Country
+import com.m7mdra.countrieskmm.data.network.model.Country
 import io.ktor.client.*
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.*

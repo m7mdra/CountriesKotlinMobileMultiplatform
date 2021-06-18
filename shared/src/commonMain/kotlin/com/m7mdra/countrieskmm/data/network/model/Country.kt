@@ -1,12 +1,13 @@
-package com.m7mdra.countrieskmm.network.model
+package com.m7mdra.countrieskmm.data.network.model
 
 
 import com.m7mdra.myapplication.network.model.Currency
-import com.m7mdra.countrieskmm.data.network.model.Language
 import com.m7mdra.myapplication.network.model.RegionalBloc
 import com.m7mdra.myapplication.network.model.Translations
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 
 @Serializable
 data class Country(
@@ -60,4 +61,32 @@ data class Country(
 ) {
     val flag: String
         get() = "https://flagcdn.com/h240/${alpha2Code.toLowerCase()}.png"
+}
+
+fun com.example.Country.mapTo(): Country {
+    return Country(
+        name = name ?: "",
+        alpha2Code = alpha2Code ?: "",
+        alpha3Code = alpha3Code ?: "",
+        nativeName = nativeName ?: "",
+        altSpellings = Json.decodeFromString(altSpellings ?: "") ?: listOf(),
+        area = area,
+        borders = Json.decodeFromString(borders ?: "") ?: listOf(),
+        callingCodes = Json.decodeFromString(callingCodes ?: "") ?: listOf(),
+        capital = capital ?: "",
+        cioc = cioc ?: "",
+        currencies = Json.decodeFromString(currencies ?: "") ?: listOf(),
+        demonym = demonym ?: "",
+        gini = gini,
+        languages = Json.decodeFromString(languages ?: "") ?: listOf(),
+        latlng = Json.decodeFromString(latlng ?: "") ?: listOf(),
+        numericCode = numericCode ?: "",
+        population = population?.toInt() ?: 0,
+        region = region ?: "",
+        regionalBlocs = Json.decodeFromString(regionalBlocs ?: "") ?: listOf(),
+        subregion = subregion ?: "",
+        timezones = Json.decodeFromString(timezones ?: "") ?: listOf(),
+        topLevelDomain = Json.decodeFromString(topLevelDomain ?: "") ?: listOf(),
+        translations = Json.decodeFromString(translations ?: ""),
+    )
 }

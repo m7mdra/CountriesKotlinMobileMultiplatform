@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.m7mdra.countrieskmm.network.model.Country
+import com.m7mdra.countrieskmm.data.network.model.Country
 import com.squareup.picasso.Picasso
 
 
