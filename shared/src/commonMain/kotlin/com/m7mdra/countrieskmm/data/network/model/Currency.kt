@@ -1,11 +1,14 @@
-package com.m7mdra.myapplication.network.model
+package com.m7mdra.countrieskmm.data.network.model
 
 
+import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Currency(
+
+data class  Currency constructor(
+
     @SerialName("code")
     val code: String?,
     @SerialName("name")

@@ -1,4 +1,4 @@
-package com.m7mdra.myapplication.network
+package com.m7mdra.countrieskmm.data.network
 
 import com.m7mdra.countrieskmm.data.network.model.Country
 import io.ktor.client.*
@@ -26,5 +26,6 @@ class CountryApi {
 
     suspend fun getAll(): List<Country> {
         return httpClient.get(ALL_COUNTRIES)
+
     }
 }

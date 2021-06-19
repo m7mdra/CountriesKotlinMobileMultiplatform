@@ -1,12 +1,9 @@
 package com.m7mdra.countrieskmm.data.network.model
 
 
-import com.m7mdra.myapplication.network.model.Currency
 import com.m7mdra.myapplication.network.model.RegionalBloc
 import com.m7mdra.myapplication.network.model.Translations
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.*
 import kotlinx.serialization.json.Json
 
 @Serializable
@@ -63,7 +60,36 @@ data class Country(
         get() = "https://flagcdn.com/h240/${alpha2Code.toLowerCase()}.png"
 }
 
-fun com.example.Country.mapTo(): Country {
+fun Country.map(): com.example.Country {
+    return com.example.Country(
+        name = name,
+        alpha2Code = alpha2Code,
+        alpha3Code = alpha3Code,
+        nativeName = nativeName,
+        altSpellings = Json.encodeToString(altSpellings),
+        area = area,
+        borders = Json.encodeToString(borders),
+        callingCodes = Json.encodeToString(callingCodes),
+        capital = capital,
+        cioc = cioc ?: "",
+        currencies = Json.encodeToString(currencies),
+        demonym = demonym,
+        gini = gini,
+        languages = Json.encodeToString(languages),
+        latlng = Json.encodeToString(latlng),
+        numericCode = numericCode ?: "",
+        population = population.toDouble(),
+        region = region,
+        regionalBlocs = Json.encodeToString(regionalBlocs),
+        subregion = subregion,
+        timezones = Json.encodeToString(timezones),
+        topLevelDomain = Json.encodeToString(topLevelDomain),
+        translations = Json.encodeToString(translations),
+        flag = ""
+    )
+}
+
+fun com.example.Country.map(): Country {
     return Country(
         name = name ?: "",
         alpha2Code = alpha2Code ?: "",
@@ -87,6 +113,6 @@ fun com.example.Country.mapTo(): Country {
         subregion = subregion ?: "",
         timezones = Json.decodeFromString(timezones ?: "") ?: listOf(),
         topLevelDomain = Json.decodeFromString(topLevelDomain ?: "") ?: listOf(),
-        translations = Json.decodeFromString(translations ?: ""),
+        translations = Json.decodeFromString(Json.encodeToString(translations)),
     )
 }

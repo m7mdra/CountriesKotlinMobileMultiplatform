@@ -5,6 +5,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("com.squareup.sqldelight")
+    kotlin("plugin.serialization")
 }
 
 version = "1.0"
