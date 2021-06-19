@@ -10,11 +10,11 @@ import Foundation
 import shared
 
 class CountryViewModel: ObservableObject {
-    
+    let repository = CountryRepository(countryApi: CountryApi(), database: Database(databaseDriverFactory: DatabaseDriverFactory()))
     @Published var state = State.idle
-    func getAll(){
+    func getAll(refresh:Bool = false){
         state = .loading
-        CountryApi().getAll { (countires, error) in
+        repository.getAll(refresh:refresh) { (countires, error) in
             if let countryList = countires{
                 self.state = .result(countryList)
             }else{

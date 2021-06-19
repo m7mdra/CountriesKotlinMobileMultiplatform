@@ -10,6 +10,7 @@ import SwiftUI
 import shared
 import SDWebImageSwiftUI
 struct CountryView :View {
+    var isFirst = false
     let country:Country
     let font = Font.custom("", size: 30).bold()
     var body: some View{
@@ -38,6 +39,7 @@ struct CountryView :View {
             }
         }
         .cornerRadius(16)
+        .padding(.top, isFirst ? 8 : 0)
         .padding(.leading,16)
         .padding(.trailing,16)
         .padding(.bottom,8)

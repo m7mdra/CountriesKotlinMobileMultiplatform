@@ -6,7 +6,7 @@ import com.m7mdra.countrieskmm.data.network.model.map
 import com.m7mdra.countrieskmm.data.network.CountryApi
 import com.m7mdra.countrieskmm.logger.log
 
-class CountryRepository(private val countryApi: CountryApi, private val database: Database) {
+class CountryRepository(private val countryApi: CountryApi = CountryApi(), private val database: Database) {
     suspend fun getAll(refresh: Boolean = false): List<Country> {
         val cachedData = database.getCachedData()
         print("MEGA: ${cachedData.size} found.")

@@ -16,7 +16,7 @@ struct ContentView: View {
     private func listView() -> AnyView {
         switch viewModel.state {
         case .loading:
-            return AnyView(Text("Loading...").multilineTextAlignment(.center))
+            return AnyView(ActivityIndicatorView(isAnimating: .constant(true), style: .medium))
         case .result(let countries):
             return AnyView(ScrollView {
                 LazyVStack {
@@ -25,7 +25,7 @@ struct ContentView: View {
                     }
                 }
             }.padding(.top,8)
-            
+            .clipped(antialiased: true)
             )
         case .error(let description):
             return AnyView(Text(description).multilineTextAlignment(.center))
@@ -43,4 +43,16 @@ struct ContentView_Previews: PreviewProvider {
 
 extension Country : Identifiable{
     
+}
+struct ActivityIndicatorView: UIViewRepresentable {
+    @Binding var isAnimating: Bool
+    let style: UIActivityIndicatorView.Style
+    
+    func makeUIView(context: UIViewRepresentableContext<ActivityIndicatorView>) -> UIActivityIndicatorView {
+        return UIActivityIndicatorView(style: style)
+    }
+    
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicatorView>) {
+        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
+    }
 }
