@@ -3,7 +3,10 @@ package com.m7mdra.countrieskmm.data.network.model
 
 import com.m7mdra.myapplication.network.model.RegionalBloc
 import com.m7mdra.myapplication.network.model.Translations
-import kotlinx.serialization.*
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 @Serializable
@@ -90,29 +93,37 @@ fun Country.map(): com.example.Country {
 }
 
 fun com.example.Country.map(): Country {
+    val json = Json { isLenient = true }
     return Country(
         name = name ?: "",
         alpha2Code = alpha2Code ?: "",
         alpha3Code = alpha3Code ?: "",
         nativeName = nativeName ?: "",
-        altSpellings = Json.decodeFromString(altSpellings ?: "") ?: listOf(),
+        altSpellings = json.decodeFromString(altSpellings?.escapeJsonArray() ?: "") ?: listOf(),
         area = area,
-        borders = Json.decodeFromString(borders ?: "") ?: listOf(),
-        callingCodes = Json.decodeFromString(callingCodes ?: "") ?: listOf(),
+        borders = json.decodeFromString(borders ?: "") ?: listOf(),
+        callingCodes = json.decodeFromString(callingCodes ?: "") ?: listOf(),
         capital = capital ?: "",
         cioc = cioc ?: "",
-        currencies = Json.decodeFromString(currencies ?: "") ?: listOf(),
+        currencies = json.decodeFromString(currencies ?: "") ?: listOf(),
         demonym = demonym ?: "",
         gini = gini,
-        languages = Json.decodeFromString(languages ?: "") ?: listOf(),
-        latlng = Json.decodeFromString(latlng ?: "") ?: listOf(),
+        languages = json.decodeFromString(languages ?: "") ?: listOf(),
+        latlng = json.decodeFromString(latlng ?: "") ?: listOf(),
         numericCode = numericCode ?: "",
         population = population?.toInt() ?: 0,
         region = region ?: "",
-        regionalBlocs = Json.decodeFromString(regionalBlocs ?: "") ?: listOf(),
+        regionalBlocs = json.decodeFromString(regionalBlocs ?: "") ?: listOf(),
         subregion = subregion ?: "",
-        timezones = Json.decodeFromString(timezones ?: "") ?: listOf(),
-        topLevelDomain = Json.decodeFromString(topLevelDomain ?: "") ?: listOf(),
-        translations = Json.decodeFromString(Json.encodeToString(translations)),
+        timezones = json.decodeFromString(timezones ?: "") ?: listOf(),
+        topLevelDomain = json.decodeFromString(topLevelDomain ?: "") ?: listOf(),
+        translations = json.decodeFromString(translations ?: ""),
     )
+}
+
+fun String?.escapeJsonArray(): String? {
+    return this?.replace("\\", "")
+        ?.replace("\"[", "[")
+        ?.replace("]\"", "]")
+
 }
