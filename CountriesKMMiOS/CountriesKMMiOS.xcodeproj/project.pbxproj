@@ -14,6 +14,7 @@
 		F00D70342676B62E00EFFD40 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00D70332676B62E00EFFD40 /* CountryView.swift */; };
 		F00D703C2676B8A700EFFD40 /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00D703B2676B8A700EFFD40 /* CountryViewModel.swift */; };
 		F0635BC326860C7200CF46B4 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0635BC226860C7200CF46B4 /* ChipView.swift */; };
+		F0F58DDA268639440087864C /* CountryDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F58DD9268639440087864C /* CountryDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F00D70332676B62E00EFFD40 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		F00D703B2676B8A700EFFD40 /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
 		F0635BC226860C7200CF46B4 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
+		F0F58DD9268639440087864C /* CountryDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				F00D70332676B62E00EFFD40 /* CountryView.swift */,
 				F00D703B2676B8A700EFFD40 /* CountryViewModel.swift */,
 				F0635BC226860C7200CF46B4 /* ChipView.swift */,
+				F0F58DD9268639440087864C /* CountryDetailsView.swift */,
 			);
 			path = CountriesKMMiOS;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0F58DDA268639440087864C /* CountryDetailsView.swift in Sources */,
 				F00D70342676B62E00EFFD40 /* CountryView.swift in Sources */,
 				F00D703C2676B8A700EFFD40 /* CountryViewModel.swift in Sources */,
 				F0635BC326860C7200CF46B4 /* ChipView.swift in Sources */,

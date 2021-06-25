@@ -13,7 +13,6 @@ struct CountryView :View {
     var isFirst = false
     let country:Country
     let font = Font.custom("", size: 30).bold()
-    let onTap:(Country) -> Void
     var body: some View{
         ZStack{
             WebImage(url: URL(string: country.flag)!)
@@ -47,8 +46,6 @@ struct CountryView :View {
         .frame( height: 150)
         .fixedSize(horizontal: false, vertical: true)
         .listRowInsets(EdgeInsets())
-        .onTapGesture {
-            onTap(country)
-        }
+
     }
 }

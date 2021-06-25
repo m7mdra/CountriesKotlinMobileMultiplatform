@@ -55,22 +55,20 @@ struct Chips: View {
     let titleKey: LocalizedStringKey
     var isSelected: Bool
     var onTap: ()->Void
+    let color = UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1.00)
+    let selectedColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1.00)
     var body: some View {
         HStack {
-            Image.init(systemName: systemImage).font(.title3)
-            Text(titleKey).font(.title3).lineLimit(1)
+            Image(systemName: systemImage)
+            Text(titleKey).font(.body).lineLimit(1)
         }.padding(.leading, 8)
         .padding(.trailing,8)
         .padding(.top,2)
         .padding(.bottom,2)
         .foregroundColor(isSelected ? .white : .blue)
-        .background(isSelected ? Color.blue : Color.white)
+        .background(isSelected ? Color(selectedColor.cgColor) : Color(color.cgColor))
         .cornerRadius(40)
-        .overlay(
-            RoundedRectangle(cornerRadius: 40)
-                .stroke(Color.blue, lineWidth: 1.5)
-            
-        ).onTapGesture {
+        .onTapGesture {
             onTap()
         }
     }
