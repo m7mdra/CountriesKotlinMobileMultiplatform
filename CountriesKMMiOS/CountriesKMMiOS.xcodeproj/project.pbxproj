@@ -13,6 +13,7 @@
 		F00D70312676B60E00EFFD40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F00D70302676B60E00EFFD40 /* Assets.xcassets */; };
 		F00D70342676B62E00EFFD40 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00D70332676B62E00EFFD40 /* CountryView.swift */; };
 		F00D703C2676B8A700EFFD40 /* CountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00D703B2676B8A700EFFD40 /* CountryViewModel.swift */; };
+		F0635BC326860C7200CF46B4 /* ChipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0635BC226860C7200CF46B4 /* ChipView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F00D70302676B60E00EFFD40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F00D70332676B62E00EFFD40 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		F00D703B2676B8A700EFFD40 /* CountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewModel.swift; sourceTree = "<group>"; };
+		F0635BC226860C7200CF46B4 /* ChipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				F00D70332676B62E00EFFD40 /* CountryView.swift */,
 				F00D703B2676B8A700EFFD40 /* CountryViewModel.swift */,
+				F0635BC226860C7200CF46B4 /* ChipView.swift */,
 			);
 			path = CountriesKMMiOS;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			files = (
 				F00D70342676B62E00EFFD40 /* CountryView.swift in Sources */,
 				F00D703C2676B8A700EFFD40 /* CountryViewModel.swift in Sources */,
+				F0635BC326860C7200CF46B4 /* ChipView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 			);

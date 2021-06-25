@@ -22,7 +22,40 @@ class CountryViewModel: ObservableObject {
             }
         }
     }
-    
+    func filterAlphabetic(){
+        state = .loading
+        repository.filterByAlphabetic { (countires, error) in
+            if let countryList = countires{
+                self.state = .result(countryList)
+            }else{
+                self.state  = .error(error?.localizedDescription ?? "Unknown error")
+            }
+        }
+    }
+    func filterByArea(){
+        state = .loading
+        repository.filterByArea { (countires, error) in
+            if let countryList = countires{
+                countryList.forEach { c in
+                    print("\(c.name) \(c.area)")
+                }
+                self.state = .result(countryList)
+            }else{
+                self.state  = .error(error?.localizedDescription ?? "Unknown error")
+            }
+        }
+    }
+    func filterByPopulation(){
+        state = .loading
+        repository.filterByPopulation { (countires, error) in
+            if let countryList = countires{
+                self.state = .result(countryList)
+            }else{
+                self.state  = .error(error?.localizedDescription ?? "Unknown error")
+            }
+        }
+    }
+
 }
 enum State {
     case idle

@@ -2,7 +2,12 @@ import SwiftUI
 import shared
 
 struct ContentView: View {
-    
+    private  let  chips = [
+        Chip(isSelected: false, systemImage: "checkmark", titleKey: "Alphabatic"),
+        Chip(isSelected: false, systemImage: "checkmark", titleKey: "Area"),
+        Chip(isSelected: false, systemImage: "checkmark", titleKey: "Population"),
+        
+    ]
     @ObservedObject var viewModel = CountryViewModel()
     var body: some View {
         NavigationView {
@@ -18,14 +23,30 @@ struct ContentView: View {
         case .loading:
             return AnyView(ActivityIndicatorView(isAnimating: .constant(true), style: .medium))
         case .result(let countries):
-            return AnyView(ScrollView {
-                LazyVStack {
-                    ForEach(countries) { country in
-                        CountryView(country: country)
+            return AnyView(
+                
+                VStack{
+                    ChipGroup(chips:chips ) { chip in
+                        if(chips[0].id == chip.id){
+                            viewModel.filterAlphabetic()
+                        }else if(chips[1].id == chip.id){
+                            viewModel.filterByArea()
+                        }else{
+                            viewModel.filterByPopulation()
+                        }
+                        
+                    }
+                    ScrollView {
+                        
+                        LazyVStack {
+                            ForEach(countries) { country in
+                                CountryView(country: country)
+                            }
+                            
+                        }.padding(.top,8)
+                        .clipped(antialiased: true)
                     }
                 }
-            }.padding(.top,8)
-            .clipped(antialiased: true)
             )
         case .error(let description):
             return AnyView(Text(description).multilineTextAlignment(.center))
