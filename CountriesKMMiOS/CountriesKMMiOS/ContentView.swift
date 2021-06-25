@@ -40,7 +40,9 @@ struct ContentView: View {
                         
                         LazyVStack {
                             ForEach(countries) { country in
-                                CountryView(country: country)
+                                CountryView(country: country){country in
+                                    
+                                }
                             }
                             
                         }.padding(.top,8)

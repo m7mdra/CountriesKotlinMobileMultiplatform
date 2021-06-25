@@ -49,7 +49,7 @@ class CountryViewModel(private val app: Application) : AndroidViewModel(app) {
                 when (i) {
                     0 -> repository.filterByAlphabetic()
                     1 -> repository.filterByPopulation()
-                    3 -> repository.filterByArea()
+                    2 -> repository.filterByArea()
                     else -> repository.filterByPopulation()
                 }
             }.onSuccess {
