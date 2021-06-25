@@ -36,7 +36,20 @@ class CountryViewModel(private val app: Application) : AndroidViewModel(app) {
         }
     }
 
+    fun getBorders(ids:List<String>){
+        mainScope.launch {
 
+
+            kotlin.runCatching {
+                state.value = LoadingState
+                repository.getBorderingCountries(ids)
+            }.onSuccess {
+                state.value = Success(it)
+            }.onFailure {
+                state.value = ErrorState
+            }
+        }
+    }
     override fun onCleared() {
         mainScope.cancel()
         super.onCleared()

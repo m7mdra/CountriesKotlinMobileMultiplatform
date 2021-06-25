@@ -8,6 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.ChipGroup
+import com.m7mdra.countrieskmm.data.CountryRepository
+import com.m7mdra.countrieskmm.data.database.Database
+import com.m7mdra.countrieskmm.data.database.DatabaseDriverFactory
+import com.m7mdra.countrieskmm.data.network.CountryApi
+import kotlinx.coroutines.CoroutineScope
 
 
 class MainActivity : AppCompatActivity() {
@@ -56,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                     progressbar.visibility = View.GONE
                     chipGroup.visibility = View.VISIBLE
                     recyclerView.adapter = CountryAdapter(this@MainActivity, state.list) {
-                        Log.d("MEGA", "onCreate: $it")
+                        viewModel.getBorders(it.borders)
                     }
                 }
             }

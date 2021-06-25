@@ -31,6 +31,7 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
         frameworkName = "shared"
+
         podfile = project.file("../CountriesKMMiOS/Podfile")
     }
     

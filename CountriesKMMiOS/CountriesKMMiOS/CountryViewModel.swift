@@ -34,6 +34,7 @@ class CountryViewModel: ObservableObject {
     }
     func filterByArea(){
         state = .loading
+        
         repository.filterByArea { (countires, error) in
             if let countryList = countires{
                 countryList.forEach { c in

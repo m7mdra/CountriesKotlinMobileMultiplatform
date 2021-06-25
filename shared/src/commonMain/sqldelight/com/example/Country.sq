@@ -37,3 +37,5 @@ filterByAlphabetic:
 SELECT * FROM Country ORDER BY name;
 filterByArea:
 SELECT * FROM Country ORDER BY area DESC;
+getNeighbors:
+SELECT * FROM Country WHERE alpha3Code IN ?;

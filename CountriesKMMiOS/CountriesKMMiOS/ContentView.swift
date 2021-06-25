@@ -63,7 +63,7 @@ struct CountryListView : View {
                 LazyVStack {
                     ForEach(list) { country in
                         
-                        NavigationLink(destination: CountryDetailsView(country: country).navigationTitle(country.name)){
+                        NavigationLink(destination: CountryDetailsView().navigationTitle(country.name)){
                             CountryView(country: country)
                         }
                         

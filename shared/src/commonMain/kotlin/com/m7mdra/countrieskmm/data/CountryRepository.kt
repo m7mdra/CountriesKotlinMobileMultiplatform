@@ -29,18 +29,22 @@ class CountryRepository(
         }
     }
 
-    suspend fun filterByPopulation(): List<Country> {
+  suspend  fun filterByPopulation(): List<Country> {
         return database.countryQueries.filterByPopulation().executeAsList()
             .map { it.map() }
     }
 
-    suspend fun filterByAlphabetic(): List<Country> {
+  suspend  fun filterByAlphabetic(): List<Country> {
         return database.countryQueries.filterByAlphabetic().executeAsList()
             .map { it.map() }
     }
 
-    suspend fun filterByArea(): List<Country> {
+   suspend fun filterByArea(): List<Country> {
         return database.countryQueries.filterByArea().executeAsList()
+            .map { it.map() }
+    }
+   suspend fun getBorderingCountries(countriesIds:List<String>):List<Country>{
+        return database.countryQueries.getNeighbors(countriesIds).executeAsList()
             .map { it.map() }
     }
 
