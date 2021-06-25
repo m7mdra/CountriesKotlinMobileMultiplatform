@@ -31,3 +31,9 @@ INSERT INTO Country(alpha2Code,alpha3Code,altSpellings,area,borders,callingCodes
 getCountries:
 SELECT * FROM Country;
 
+filterByPopulation:
+SELECT * FROM Country ORDER BY population DESC;
+filterByAlphabetic:
+SELECT * FROM Country ORDER BY name;
+filterByArea:
+SELECT * FROM Country ORDER BY area DESC;

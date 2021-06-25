@@ -7,6 +7,7 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.ChipGroup
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,16 +22,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        viewModel.loadCountries()
-        /*
-        mainScope.launch {
-            kotlin.runCatching {
-                repository.getAll()
-            }.onSuccess {
+        val chipGroup = findViewById<ChipGroup>(R.id.chipGroup)
+        chipGroup.isSingleSelection = true
+        chipGroup.setOnCheckedChangeListener { _, checkedId ->
+            Log.d("MEGA","checked$checkedId")
+            when (checkedId) {
+                R.id.alphaChip -> {
+                    viewModel.filter(0)
+                }
+                R.id.populationChip -> {
+                    viewModel.filter(1)
 
-            }.onFailure {
-                it.printStackTrace()
-                progressbar.visibility = View.GONE*/
+                }
+                R.id.sizeChip -> {
+                    viewModel.filter(2)
+
+                }
+            }
+        }
+        viewModel.loadCountries()
+
         viewModel.state.observe(this) { state ->
             when (state) {
                 ErrorState -> {
@@ -43,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 
                 is Success -> {
                     progressbar.visibility = View.GONE
+                    chipGroup.visibility = View.VISIBLE
                     recyclerView.adapter = CountryAdapter(this@MainActivity, state.list) {
                         Log.d("MEGA", "onCreate: $it")
                     }
@@ -52,7 +64,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun load() {
-
-    }
 }

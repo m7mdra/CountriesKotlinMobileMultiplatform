@@ -36,9 +36,28 @@ class CountryViewModel(private val app: Application) : AndroidViewModel(app) {
         }
     }
 
+
     override fun onCleared() {
         mainScope.cancel()
         super.onCleared()
+    }
+
+    fun filter(i: Int) {
+        mainScope.launch {
+            kotlin.runCatching {
+                state.value = LoadingState
+                when (i) {
+                    0 -> repository.filterByAlphabetic()
+                    1 -> repository.filterByPopulation()
+                    3 -> repository.filterByArea()
+                    else -> repository.filterByPopulation()
+                }
+            }.onSuccess {
+                state.value = Success(it)
+            }.onFailure {
+                state.value = ErrorState
+            }
+        }
     }
 }
 

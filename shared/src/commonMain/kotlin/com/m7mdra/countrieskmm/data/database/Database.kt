@@ -46,4 +46,5 @@ class Database(databaseDriverFactory: DatabaseDriverFactory) {
         return database.countryQueries.getCountries().executeAsList()
     }
 
+
 }
