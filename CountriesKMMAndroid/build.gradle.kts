@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("kotlin-android")
 }
 
 dependencies {
@@ -11,6 +12,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
     implementation("androidx.core:core-ktx:1.5.0")
     implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
 
 }
 
