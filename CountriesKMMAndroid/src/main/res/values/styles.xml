@@ -3,7 +3,9 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#6DBCC7</item>
+
+        <item name="android:textColorPrimary">@color/primaryTextColor</item>
     </style>
     <style name="circleImageView" parent="">
         <item name="cornerFamily">rounded</item>

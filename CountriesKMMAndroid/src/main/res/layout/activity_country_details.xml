@@ -4,13 +4,257 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CountryDetailsActivity">
+    tools:context=".CountryDetailsActivity"
+    tools:ignore="HardcodedText">
 
     <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Country Details" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:background="#6FAEC4C7"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Name"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryNameTextView"
+
+                    android:text="Afghanistan"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+
+            <TableRow android:padding="8dp">
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Native Name"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryNativeNameTextView"
+
+                    android:text="افغانستان"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+
+            <TableRow
+                android:background="#6FAEC4C7"
+                android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Captial"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryCapitalTextView"
+
+                    android:gravity=""
+                    android:text="Kabul"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+
+            <TableRow android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Region"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryRegionTextView"
+
+                    android:gravity=""
+                    android:text="Asia/Southern Asia"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+
+            <TableRow
+                android:background="#6FAEC4C7"
+                android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="ISO 2 code"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:text="AF"
+                    android:id="@+id/countryISO2TextView"
+
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+
+            <TableRow android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="ISO 3 code"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:text="AFG"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    android:id="@+id/countryISO3TextView"
+
+                    />
+            </TableRow>
+
+            <TableRow
+                android:background="#6FAEC4C7"
+                android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Language"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryLanguagesTextView"
+
+                    android:text="Pashto, Uzbek, Turkmen"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+            </TableRow>
+
+            <TableRow android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Time zone"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryTimezoneTextView"
+
+                    android:text="UTC+04:30"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+
+            <TableRow
+                android:background="#6FAEC4C7"
+                android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Currencies"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryCurrencyTextView"
+
+                    android:text="Afghan afghani (AFN) (؋)"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+
+            <TableRow
+                android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Area"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryAreaTextView"
+
+                    android:text="652230 km"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+            <TableRow
+                android:background="#6FAEC4C7"
+                android:padding="8dp"
+
+                >
+
+                <TextView
+                    android:layout_marginEnd="32dp"
+                    android:text="Population"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                <TextView
+                    android:id="@+id/countryPopulationTextView"
+
+                    android:text="27657145"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+
+                    />
+            </TableRow>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:text="Borders"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/borderRecyclerView"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="10"
+                tools:listitem="@layout/row_country_small" />
+        </TableLayout>
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
