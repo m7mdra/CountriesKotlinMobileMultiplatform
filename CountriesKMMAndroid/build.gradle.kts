@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("kotlin-android")
-    id("kotlin-extensions")
+    id("kotlin-android-extensions")
     id ("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 
 }

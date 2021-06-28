@@ -3,23 +3,26 @@ package com.m7mdra.countrieskmm.android
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.RecyclerView
 import com.m7mdra.countrieskmm.data.network.model.Country
 import com.squareup.picasso.Picasso
 
 
 class CountryAdapter(
-    private val context: Context,
+    context: Context,
+    @LayoutRes val layoutId: Int = R.layout.row_country,
     private val list: List<Country>,
     private val onClick: (Country) -> Unit = {}
 ) :
     RecyclerView.Adapter<CountryViewHolder>() {
-    val picasso = Picasso.Builder(context)
+    private val picasso: Picasso = Picasso.Builder(context)
         .loggingEnabled(true)
         .build()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
         return CountryViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.row_country, parent, false)
+            LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         )
     }
 

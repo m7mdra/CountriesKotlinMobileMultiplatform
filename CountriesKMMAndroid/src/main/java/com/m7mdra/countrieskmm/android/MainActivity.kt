@@ -1,5 +1,6 @@
 package com.m7mdra.countrieskmm.android
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,11 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.ChipGroup
-import com.m7mdra.countrieskmm.data.CountryRepository
-import com.m7mdra.countrieskmm.data.database.Database
-import com.m7mdra.countrieskmm.data.database.DatabaseDriverFactory
-import com.m7mdra.countrieskmm.data.network.CountryApi
-import kotlinx.coroutines.CoroutineScope
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         val chipGroup = findViewById<ChipGroup>(R.id.chipGroup)
         chipGroup.isSingleSelection = true
         chipGroup.setOnCheckedChangeListener { _, checkedId ->
-            Log.d("MEGA","checked$checkedId")
+            Log.d("MEGA", "checked$checkedId")
             when (checkedId) {
                 R.id.alphaChip -> {
                     viewModel.filter(0)
@@ -60,8 +56,9 @@ class MainActivity : AppCompatActivity() {
                 is Success -> {
                     progressbar.visibility = View.GONE
                     chipGroup.visibility = View.VISIBLE
-                    recyclerView.adapter = CountryAdapter(this@MainActivity, state.list) {
-                        viewModel.getBorders(it.borders)
+                    recyclerView.adapter = CountryAdapter(this@MainActivity, list = state.list) {
+                        CountryDetailsActivity.country = it
+                        startActivity(Intent(this, CountryDetailsActivity::class.java))
                     }
                 }
             }

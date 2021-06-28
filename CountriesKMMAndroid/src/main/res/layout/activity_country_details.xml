@@ -22,6 +22,8 @@
         android:layout_height="0dp"
         android:layout_margin="16dp"
         android:scrollbars="none"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -191,7 +193,8 @@
 
                 <TextView
                     android:id="@+id/countryCurrencyTextView"
-
+                    android:layout_weight="1"
+                    android:maxLines="@null"
                     android:text="Afghan afghani (AFN) (؋)"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
 

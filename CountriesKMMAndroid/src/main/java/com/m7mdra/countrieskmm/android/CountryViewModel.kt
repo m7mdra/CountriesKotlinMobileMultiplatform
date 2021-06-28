@@ -38,8 +38,6 @@ class CountryViewModel(private val app: Application) : AndroidViewModel(app) {
 
     fun getBorders(ids:List<String>){
         mainScope.launch {
-
-
             kotlin.runCatching {
                 state.value = LoadingState
                 repository.getBorderingCountries(ids)
