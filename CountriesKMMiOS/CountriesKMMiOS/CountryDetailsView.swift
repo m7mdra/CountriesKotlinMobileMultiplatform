@@ -10,16 +10,109 @@ import Foundation
 import SwiftUI
 import shared
 struct CountryDetailsView : View {
-    let country:Country = Country(alpha2Code: "AF", alpha3Code: "AFG", altSpellings: ["sudan"], area: KotlinDouble(double: 27657145), borders: ["IRN","PAK","TKM","UZB","TJK","CHN"], callingCodes: ["93"], capital: "Kabul", cioc: "AFG", currencies: [Currency(code: "AFN", name: "Afghan afghani", symbol: "؋")], demonym: "Afgan", gini: KotlinDouble(double: 27.8), languages: [Language(iso6391: "ps", iso6392: "pus", name: "Pashto", nativeName: "پښتو")], latlng: [KotlinDouble(double: 33),KotlinDouble(65)], name: "Afghanistan", nativeName: "افغانستان", numericCode: "004", population: 27657145, region: "Asia", regionalBlocs: [RegionalBloc(acronym: "SAARC", name: "South Asian Association for Regional Cooperation", otherAcronyms: [], otherNames: [])], subregion: "Southern Asia", timezones: ["UTC+04:30"], topLevelDomain: [".af"], translations: Translations(br: "Afeganistão", de: "Afghanistan", es: "Afganistán", fa: "افغانستان", fr: "Afghanistan", hr: "Afganistan", it: "Afghanistan", ja: "アフガニスタン", nl: "Afghanistan", pt: "Afeganistão"))
+    let country:Country
+    @ObservedObject var viewModel = CountryDetailsViewModel()
     var body: some View{
-        VStack(alignment:.leading){
-            Text("Summary")
-                .font(.largeTitle)
-        }.padding(16)
-    }
-}
-struct CountryDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        CountryDetailsView()
+        List{
+            Group{
+                HStack{
+                    Text("Name")
+                    Spacer()
+                    Text(country.name)
+                }
+                
+                HStack{
+                    Text("Native name")
+                    Spacer()
+                    Text(country.nativeName)
+                }
+                
+                HStack{
+                    Text("Capital")
+                    Spacer()
+                    Text(country.capital)
+                }
+                HStack{
+                    Text("Reigon")
+                    Spacer()
+                    Text("\(country.region)/\(country.subregion)")
+                }
+                
+                HStack{
+                    Text("ISO 2 code")
+                    Spacer()
+                    Text(country.alpha2Code)
+                }
+                HStack{
+                    Text("ISO 3 code")
+                    Spacer()
+                    Text(country.alpha3Code)
+                }
+                HStack{
+                    Text("Language")
+                    Spacer()
+                    Text(ListFormatter.localizedString(byJoining: country.languages.map{$0.name ?? ""}))
+                }
+                HStack{
+                    Text("Timezone")
+                    Spacer()
+                    Text(ListFormatter.localizedString(byJoining: country.timezones))
+                }
+                
+                HStack{
+                    Text("Currencies")
+                    Spacer()
+                    Text(ListFormatter.localizedString(byJoining: country.currencies.map{$0.name ?? ""}))
+                }
+                HStack{
+                    Text("Area")
+                    Spacer()
+                    Text("\(country.area ?? 0)")
+                }
+                
+            }
+            Group{
+                HStack{
+                    Text("Population")
+                    Spacer()
+                    Text("\(country.population )")
+                }
+                Text("Borders")
+                    .padding(.top)
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                
+                switch(viewModel.state){
+                case .result(let list):
+                    ScrollView(.horizontal){
+                        LazyHStack{
+                            ForEach(list){ country in
+                               NavigationLink(
+                                destination: CountryDetailsView(country: country),
+                                label: {
+                                    CountryMiniView(country: country)
+                                })
+                                
+                            }
+                        }
+                    }
+                case .error:
+                    VStack{
+                        Text("Failed to load data, retry")
+                        Button("Retry", action: {
+                            viewModel.borders(ids: country.borders)
+                        })
+                    }
+                case .loading:
+                    ActivityIndicatorView(isAnimating: .constant(true), style: .medium)
+                    
+                    
+                default:
+                    Text("Hello")
+                }
+            }.onAppear(perform: {
+                viewModel.borders(ids: country.borders)
+            })
+
+        }
     }
 }
