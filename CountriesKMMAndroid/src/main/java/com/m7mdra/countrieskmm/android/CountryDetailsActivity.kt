@@ -15,7 +15,7 @@ import com.m7mdra.countrieskmm.data.network.model.Country
 import kotlinx.android.synthetic.main.activity_country_details.*
 
 
-class CountryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
+class CountryDetailsActivity : AppCompatActivity() {
     companion object {
         @JvmStatic
         lateinit var country: Country
@@ -26,18 +26,13 @@ class CountryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
             .create(CountryDetailsViewModel::class.java)
     }
 
-    private lateinit var map: GoogleMap
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_country_details)
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-        Log.d("MEGA", "onCreate: ${country.currencies}")
-        Log.d("MEGA", "onCreate: ${country.languages}")
-        Log.d("MEGA", "onCreate: ${country.timezones}")
+
+
         country.apply {
 
             viewModel.getBorders(borders)
@@ -75,11 +70,5 @@ class CountryDetailsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
-    override fun onMapReady(map: GoogleMap) {
-        val coordinates = country.latlng
-        if(coordinates.isEmpty())return;
-        this.map = map
-        val latLng = LatLng(coordinates[0], coordinates[1])
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13f))
-    }
+
 }
