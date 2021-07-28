@@ -37,9 +37,7 @@ class CountryViewModel: ObservableObject {
         
         repository.filterByArea { (countires, error) in
             if let countryList = countires{
-                countryList.forEach { c in
-                    print("\(c.name) \(c.area)")
-                }
+               
                 self.state = .result(countryList)
             }else{
                 self.state  = .error(error?.localizedDescription ?? "Unknown error")
